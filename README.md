@@ -1,20 +1,36 @@
-# README for project get_screenshot #
+#   get screenshot of page element with zoom factor
 
-get_screenshot is the javascript application with command line options arguments
+##  What is it?
+Get the screenshot of any web page css element with zoom effect.
 
-### What is this repository for? ###
 
-* Version 1.0 2016.08.16
+* Version 1.0 2017.01.16
 
-### How do I get set up? ###
+### How to install? ###
+This script require nodejs and phantomjs ( see `https://gist.github.com/julionc/7476620` ).
 
-* Summary of usage
-```casperjs get_screenshot.js --url='http://url.com' --outfile='/path/file' [--delay=1000] [--viewpw=1280] [--viewph=768] [ --top=100] [--left=120] [--width=1280] [--height=768] [--png] [--jpg]```
 
-* Require ```node.js, phantomjs, casperjs```
 
-* How to run tests
-```casperjs get_screenshot.js --url='http://google.com' --outfile='./google.png' ```
+### 		How to run
+Usage: `phantomjs get_element_with_zoom.js address outfile delay top left width height viewpw viewph selector zoomFactor`
+where:
+	+ address - url of page ( eg `http://google.com` )
+	+ outfile - save screenshot to this file ( eg `google.png`)
+	+ delay - delay in ms for any executed script on this page ( eg `1000` )
+	+ top - indent from top of the page ( eg `0`)
+	+ left - indent from left of the page ( eg `0`)
+	+ width - use same value as viewpw - width of port view ( eg `1280` )
+	+ height - use same value as viewph - height of port view ( eg `768` )
+	+ viewpw - width of port view ( eg `1280` )
+	+ viewph - height of port view ( eg `768` )
+	+ selector - specify a selector ( eg `"#livepress-update-20461291"` or `".home-logo__default"` )
+	+ zoomFactor - zoom ( eg `0.5` or `3` )
+
+	
+Sample:
+``` phantomjs get_element_with_zoom.js http://fivethirtyeight.com/live-blog/gop-convention-day-one/ 1.png 1000 0 0 1024 768 1280 920 "#livepress-update-20461291" 0.5```
+``` phantomjs get_element_with_zoom.js http://yandex.ru yandex.png 1000 0 0 1024 768 1280 920 ".home-logo__default" 2```
+
 
 
   Licensing
