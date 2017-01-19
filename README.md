@@ -1,7 +1,7 @@
-#   get screenshot of page element with zoom factor
+#   get screenshot of page element with zoom and multiply pixelRatio factor
 
 ##  What is it?
-Get the screenshot of any web page css element with zoom effect.
+Get the screenshot of any web page css element with zoom and or pixelRatio effect.
 
 
 * Version 1.0 2017.01.16
@@ -12,24 +12,38 @@ This script require nodejs and phantomjs ( see `https://gist.github.com/julionc/
 
 
 ### 		How to run
-Usage: `phantomjs get_element_with_zoom.js address outfile delay top left width height viewpw viewph selector zoomFactor`
+There are tho scripts:
+get_element_with_pixelratio.js and get_element_with_zoom.js
+
+	1.	`get_element_with_pixelratio.js` - get the element of page ( by selector ) and render it with rixelRaito ( by default = 2 ).
+Very usefull if you need get the bigger images from the page.
+
+Usage: `phantomjs get_element_with_pixelratio.js  URL  selector [ outfile  [ pixelRatio ] ] ]`
+by default outfile=outfile.png, pixelRatio=2
+
+
+	2.	`get_element_with_zoom.js` - get the element of zoomed page ( by selector ) and render it with rixelRaito ( by default = 2 ).
+If requested 
+
+Usage: `phantomjs get_element_with_zoom.js URL selector [ outfile [ zoomFactor ]]`
+by default outfile=outfile.png, zoomFactor=2
+
+
+
 where:
-	+ address - url of page ( eg `http://google.com` )
-	+ outfile - save screenshot to this file ( eg `google.png`)
-	+ delay - delay in ms for any executed script on this page ( eg `1000` )
-	+ top - indent from top of the page ( eg `0`)
-	+ left - indent from left of the page ( eg `0`)
-	+ width - use same value as viewpw - width of port view ( eg `1280` )
-	+ height - use same value as viewph - height of port view ( eg `768` )
-	+ viewpw - width of port view ( eg `1280` )
-	+ viewph - height of port view ( eg `768` )
-	+ selector - specify a selector ( eg `"#livepress-update-20461291"` or `".home-logo__default"` )
-	+ zoomFactor - zoom ( eg `0.5` or `3` )
+	+ URL - url of page ( eg `http://google.com` )
+	+ outfile - save screenshot to this file ( eg `outfile.png` by default )
+	+ selector - specify a selector ( eg `"#livepress-update-20461291"` or `".home-logo__default"` or `"body"` if you requre full page screenshot)
+	+ zoomFactor - zoom ( eg `2` by default )
+	+ pixelRatio - pixelRatio ( eg `2` by default )
 
 	
-Sample:
-``` phantomjs get_element_with_zoom.js http://fivethirtyeight.com/live-blog/gop-convention-day-one/ 1.png 1000 0 0 1024 768 1280 920 "#livepress-update-20461291" 0.5```
-``` phantomjs get_element_with_zoom.js http://yandex.ru yandex.png 1000 0 0 1024 768 1280 920 ".home-logo__default" 2```
+### Example:
+`phantomjs get_element_with_pixelratio.js http://fivethirtyeight.com/live-blog/gop-convention-day-one/ "#livepress-update-20461291" 202.png 2`
+`phantomjs get_element_with_pixelratio.js http://fivethirtyeight.com/live-blog/gop-convention-day-one/ "#livepress-update-20461291" 201.png 1`
+`phantomjs get_element_with_zoom.js http://www.panic.com/ "#above-support" 202.png 2`
+`phantomjs get_element_with_zoom.js http://www.panic.com/ "#above-support" 201.png 1`
+
 
 
 
